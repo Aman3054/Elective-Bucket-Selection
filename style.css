@@ -1,0 +1,178 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+nav {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 0;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+ul {
+    list-style: none;
+    float: right;
+}
+
+ul li {
+    display: inline-block;
+    margin-left: 30px;
+}
+
+ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+ul li a:hover {
+    text-decoration: underline;
+}
+
+.section1 {
+    text-align: center;
+    margin-top: 10px;
+    background-color: #3498db;
+    padding: 50px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.img_text {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #fff;
+    text-align: left;
+}
+
+.main_img {
+    width: 100%;
+    max-width: 1500px;
+    height: 400px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    margin-top: 20px;
+}
+
+.main_img:hover {
+    transform: scale(1.05);
+}
+
+.welcome_img {
+    width: 100%;
+    height: auto;
+}
+
+.container1 {
+    padding: 30px;
+}
+
+.container1 .h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.container1 .p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+    .container1 .row {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .container1 .col-md-4,
+    .container1 .col-md-8 {
+        width: 100%;
+    }
+}
+.section2 .container {
+    margin-top: 150px;
+}
+
+.bucket-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-bottom: 30px;
+}
+
+.bucket-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.bucket-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: filter 0.3s ease-in-out;
+}
+
+.bucket-container:hover .bucket-img {
+    filter: brightness(80%);
+}
+
+.alt-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.bucket-container:hover .alt-text {
+    opacity: 1;
+}
+
+/* Styles for shifting images */
+.section2 .col-md-4 {
+    position: relative;
+    padding: 0 15px; /* Add some horizontal padding */
+}
+
+/* Shift fullstack.jpg image to the left */
+.section2 .col-md-4:nth-child(1) .bucket-container {
+    position: relative;
+    left: -15px; /* Adjust the value as needed */
+}
+
+/* Shift cloudcomputing.png image to the right */
+.section2 .col-md-4:nth-child(3) .bucket-container {
+    position: relative;
+    right: -15px; /* Adjust the value as needed */
+}
+.bucket-container:nth-child(2) .bucket-img { /* for AI/ML image */
+    height: 1200px; /* Change this to your desired height */
+}

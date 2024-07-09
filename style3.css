@@ -1,0 +1,113 @@
+.form_deg{
+   padding-top: 200px;
+}
+.label_deg
+{
+   display:inline-block;
+   color: skyblue;
+   width:100px;
+   text-align: right;
+   padding-top: 10px;
+   padding-bottom: 10px;
+}
+.login_form
+{
+   background-color: black;
+   width: 400px;
+   padding-top: 70px;
+   padding-bottom: 70px;
+
+}
+.title_deg
+{
+   background-color: skyblue;
+   color: white;
+   text-align: center;
+   font-weight: bold;
+   width: 400px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   font-size: 20px;
+
+}
+.body_deg
+{
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: 100% 100%;
+}
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Thalonic, Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+section {
+    padding: 40px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #007bff;
+}
+
+/* Bucket Section Styles */
+.bucket-section {
+    margin-bottom: 40px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.bucket-section:hover {
+    transform: translateY(-5px);
+}
+
+.bucket-section h1 {
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.bucket-section img {
+    float: left;
+    margin-right: 20px;
+    width: 350px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.bucket-section img:hover {
+    transform: scale(1.1);
+}
+
+.bucket-section .bucket-content {
+    overflow: hidden;
+}
+
+.bucket-section .bucket-content p {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.bucket-section .bucket-content .select-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.bucket-section .bucket-content .select-btn:hover {
+    background-color: #0056b3;
+}
