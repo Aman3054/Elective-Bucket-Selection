@@ -1,0 +1,64 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { fetchElectives } from "../utils/api";
+import { useAuth } from "../state/AuthContext";
+import ElectiveCard from "../components/ElectiveCard";
+
+const HomeDashboard = () => {
+  const { token, user } = useAuth();
+  const [electives, setElectives] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const data = await fetchElectives(token);
+        setElectives(data);
+      } catch (err) {
+        const message = err.response?.data?.message || "Failed to load electives.";
+        setError(message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    load();
+  }, [token]);
+
+  return (
+    <div className="page">
+      <section className="hero">
+        <div>
+          <h2>
+            Welcome, {user?.username}!{" "}
+            <span className="hero-highlight">Plan your future elective.</span>
+          </h2>
+          <p className="muted-text">
+            Explore each specialization, attempt short quizzes, and let the system
+            recommend the best fit based on your understanding.
+          </p>
+        </div>
+      </section>
+
+      <section className="cards-grid">
+        {loading && <p className="muted-text">Loading electives...</p>}
+        {error && <div className="alert-error">{error}</div>}
+        {!loading &&
+          !error &&
+          electives.map((e) => (
+            <ElectiveCard
+              key={e._id}
+              title={e.title}
+              description={e.description}
+              salaryInfo={e.salaryInfo}
+              onSelect={() => navigate(`/electives/${e._id}`)}
+            />
+          ))}
+      </section>
+    </div>
+  );
+};
+
+export default HomeDashboard;
+
