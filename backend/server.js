@@ -13,9 +13,11 @@ const app = express();
 connectDB();
 
 // Basic middlewares for a production-ready API baseline.
+// CORS is configured via CLIENT_URL so it works both locally
+// and when deployed (Render backend + Vercel frontend).
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
+    origin: process.env.CLIENT_URL,
     credentials: true,
   })
 );

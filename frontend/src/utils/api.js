@@ -1,7 +1,9 @@
 import axios from "axios";
 
+// Use environment-based API URL so the same build
+// works locally and on Vercel/Render without code changes.
 const api = axios.create({
-  baseURL: "/api",
+  baseURL: import.meta.env.VITE_API_URL || "/api",
 });
 
 // Attach JWT token to authorized calls.
