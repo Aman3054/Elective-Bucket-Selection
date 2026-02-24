@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchElectives } from "../utils/api";
-import { useAuth } from "../state/AuthContext";
 import ElectiveCard from "../components/ElectiveCard";
+import { useAuth } from "../state/AuthContext";
+import { fetchElectives } from "../utils/api";
 
 const HomeDashboard = () => {
   const { token, user } = useAuth();
@@ -12,26 +12,36 @@ const HomeDashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const load = async () => {
-      try {
-        console.log("[HomeDashboard] fetching electives with token", {
-          hasToken: !!token,
-        });
-        const data = await fetchElectives(token);
-        setElectives(data);
-      } catch (err) {
-        console.error("[HomeDashboard] failed to load electives", {
-          status: err.response?.status,
-          data: err.response?.data,
-        });
-        const message = err.response?.data?.message || "Failed to load electives.";
-        setError(message);
-      } finally {
-        setLoading(false);
-      }
-    };
-    load();
-  }, [token]);
+  // ⭐ VERY IMPORTANT: wait until token exists
+  if (!token) return;
+
+  const load = async () => {
+    try {
+      console.log("[HomeDashboard] fetching electives with token", {
+        hasToken: !!token,
+      });
+
+      setLoading(true); // ensure loading starts when token arrives
+
+      const data = await fetchElectives(token);
+      setElectives(data);
+      setError("");
+    } catch (err) {
+      console.error("[HomeDashboard] failed to load electives", {
+        status: err.response?.status,
+        data: err.response?.data,
+      });
+
+      const message =
+        err.response?.data?.message || "Failed to load electives.";
+      setError(message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  load();
+}, [token]);
 
   return (
     <div className="page">
