@@ -12,36 +12,37 @@ const HomeDashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-  // ⭐ VERY IMPORTANT: wait until token exists
-  if (!token) return;
+    // ⭐ VERY IMPORTANT: wait until token exists
+    if (!token) return;
 
-  const load = async () => {
-    try {
-      console.log("[HomeDashboard] fetching electives with token", {
-        hasToken: !!token,
-      });
+    const load = async () => {
+      try {
+        console.log("[HomeDashboard] fetching electives with token", {
+          hasToken: !!token,
+        });
 
-      setLoading(true); // ensure loading starts when token arrives
+        setLoading(true); // ensure loading starts when token arrives
 
-      const data = await fetchElectives(token);
-      setElectives(data);
-      setError("");
-    } catch (err) {
-      console.error("[HomeDashboard] failed to load electives", {
-        status: err.response?.status,
-        data: err.response?.data,
-      });
+        const data = await fetchElectives(token);
+        console.log("ELECTIVES DATA =", data);
+        setElectives(data);
+        setError("");
+      } catch (err) {
+        console.error("[HomeDashboard] failed to load electives", {
+          status: err.response?.status,
+          data: err.response?.data,
+        });
 
-      const message =
-        err.response?.data?.message || "Failed to load electives.";
-      setError(message);
-    } finally {
-      setLoading(false);
-    }
-  };
+        const message =
+          err.response?.data?.message || "Failed to load electives.";
+        setError(message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  load();
-}, [token]);
+    load();
+  }, [token]);
 
   return (
     <div className="page">
@@ -52,8 +53,8 @@ const HomeDashboard = () => {
             <span className="hero-highlight">Plan your future elective.</span>
           </h2>
           <p className="muted-text">
-            Explore each specialization, attempt short quizzes, and let the system
-            recommend the best fit based on your understanding.
+            Explore each specialization, attempt short quizzes, and let the
+            system recommend the best fit based on your understanding.
           </p>
         </div>
       </section>
@@ -78,4 +79,3 @@ const HomeDashboard = () => {
 };
 
 export default HomeDashboard;
-
