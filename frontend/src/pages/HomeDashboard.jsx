@@ -14,9 +14,16 @@ const HomeDashboard = () => {
   useEffect(() => {
     const load = async () => {
       try {
+        console.log("[HomeDashboard] fetching electives with token", {
+          hasToken: !!token,
+        });
         const data = await fetchElectives(token);
         setElectives(data);
       } catch (err) {
+        console.error("[HomeDashboard] failed to load electives", {
+          status: err.response?.status,
+          data: err.response?.data,
+        });
         const message = err.response?.data?.message || "Failed to load electives.";
         setError(message);
       } finally {
