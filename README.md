@@ -151,7 +151,7 @@ npm run dev
 
 ```env
 PORT=5000
-MONGO_URI=mongodb://127.0.0.1:27017/elective_bucket_selection
+MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
 ```
 
